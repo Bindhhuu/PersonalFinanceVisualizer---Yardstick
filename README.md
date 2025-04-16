@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# 💸 Personal Finance Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive web application for tracking personal finances. Manage your expenses, visualize spending with charts, and get budgeting insights — all in one place.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Create a React App
 
-### `npm start`
+If you're starting from scratch:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npx create-react-app finance-visualizer
+cd finance-visualizer
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Your app will be available at: http://localhost:3000
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💾 Push to GitHub
 
-### `npm run build`
+1. Initialize git:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git init
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Add and commit your files:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git add .
+git commit -m "Initial commit"
+```
 
-### `npm run eject`
+3. Create a new repository on https://github.com and link it:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git remote add origin https://github.com/your-username/finance-visualizer.git
+git branch -M main
+git push -u origin main
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 💻 Run Locally
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To clone and run the project locally:
 
-## Learn More
+```bash
+git clone https://github.com/your-username/finance-visualizer.git
+cd finance-visualizer
+npm install
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open your browser at: http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🌍 Deploy on Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Go to https://vercel.com and log in with GitHub.
+2. Click **"Add New Project"** and import your GitHub repo.
+3. Accept the default settings (Vercel auto-detects React).
+4. Click **Deploy**.
+5. Your project will be live at something like: https://finance-visualizer.vercel.app
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🧰 Tech Stack
 
-### Making a Progressive Web App
+- **Frontend**: React.js, CSS
+- **Charts**: Recharts
+- **UI Components**: shadcn/ui 
+- **Database**: MongoDB 
+- **Deployment**: Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## ✨ Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Add, edit, delete transactions
+- Transaction list view
+- Monthly expenses bar chart
+- Category-wise pie chart
+- Budget vs actual comparison
+- Responsive design with error handling
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🤝 Contributing
+
+Feel free to fork the repo, make changes, and open a pull request!
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+Made with 💙 by Bindhu
