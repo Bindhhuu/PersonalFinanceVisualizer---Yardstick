@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 
-const categories = [
+const expenseCategories = [
   'Food', 'Transportation', 'Housing', 'Utilities', 
   'Entertainment', 'Shopping', 'Healthcare', 'Education', 'Other'
+];
+
+const incomeCategories = [
+  'Salary', 'Freelance', 'Investment Returns', 'Business', 'Gifts', 'Other Income'
 ];
 
 function TransactionForm({ onAddTransaction }) {
@@ -10,6 +14,7 @@ function TransactionForm({ onAddTransaction }) {
     amount: '',
     description: '',
     category: 'Other',
+    type: 'expense',
     date: new Date().toISOString().split('T')[0]
   });
 
@@ -17,13 +22,22 @@ function TransactionForm({ onAddTransaction }) {
     e.preventDefault();
     if (!formData.amount || !formData.description) return;
     
-    onAddTransaction(formData);
+    onAddTransaction({
+      ...formData,
+      amount: formData.type === 'expense' ? parseFloat(formData.amount) : -parseFloat(formData.amount)
+    });
+    
     setFormData({
       amount: '',
       description: '',
-      category: 'Other',
+      category: formData.type === 'expense' ? 'Other' : 'Salary',
+      type: 'expense',
       date: new Date().toISOString().split('T')[0]
     });
+  };
+
+  const getCurrentCategories = () => {
+    return formData.type === 'expense' ? expenseCategories : incomeCategories;
   };
 
   return (
@@ -31,12 +45,42 @@ function TransactionForm({ onAddTransaction }) {
       <h2>Add Transaction</h2>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
-          <label>Amount</label>
+          <label>Type</label>
+          <div className="transaction-type-toggle">
+            <button
+              type="button"
+              className={`type-btn ${formData.type === 'expense' ? 'active' : ''}`}
+              onClick={() => setFormData({ 
+                ...formData, 
+                type: 'expense',
+                category: 'Other'
+              })}
+            >
+              💸 Expense
+            </button>
+            <button
+              type="button"
+              className={`type-btn ${formData.type === 'income' ? 'active' : ''}`}
+              onClick={() => setFormData({ 
+                ...formData, 
+                type: 'income',
+                category: 'Salary'
+              })}
+            >
+              💰 Income
+            </button>
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label>Amount ($)</label>
           <input
             type="number"
             className="form-control"
             value={formData.amount}
             onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+            min="0"
+            step="0.01"
             required
           />
         </div>
@@ -48,6 +92,7 @@ function TransactionForm({ onAddTransaction }) {
             className="form-control"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            placeholder={formData.type === 'expense' ? 'What did you spend on?' : 'Source of income'}
             required
           />
         </div>
@@ -59,7 +104,7 @@ function TransactionForm({ onAddTransaction }) {
             value={formData.category}
             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
           >
-            {categories.map(category => (
+            {getCurrentCategories().map(category => (
               <option key={category} value={category}>{category}</option>
             ))}
           </select>
@@ -76,7 +121,9 @@ function TransactionForm({ onAddTransaction }) {
           />
         </div>
 
-        <button type="submit" className="btn">Add Transaction</button>
+        <button type="submit" className="btn">
+          Add {formData.type === 'expense' ? 'Expense' : 'Income'}
+        </button>
       </form>
     </div>
   );
